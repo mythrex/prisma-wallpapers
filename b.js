@@ -1,5 +1,11 @@
 const fs = require('fs');
-var casper = require('casper').create();
+var casper = require('casper').create({
+  verbose: true,
+  logLevel: "info",
+  pageSettings: {
+    userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11"
+  }
+});
 var http = require('http')
 
 var aLinks, imgLink;
@@ -31,7 +37,7 @@ function getImgLink(){
 
 casper.start("https://www.instagram.com/p/BjmNRH6lQfr/");
 
-casper.then(function () {
+casper.viewport(1024,1024).then(function () {
   this.echo('Opening Url: '+IMAGE_URL)
   this.echo('Seaching the Wallpaper...')
   imgLink = this.evaluate(getImgLink)

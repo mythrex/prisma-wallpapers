@@ -29,19 +29,8 @@ function getImgLink(){
   // getImgLink();
 }
 
-casper.start('https://www.instagram.com/prisma/?hl=en');
+casper.start("https://www.instagram.com/p/BjmNRH6lQfr/");
 
-casper.then(function () {
-  aLinks = this.evaluate(getALinks)
-  //assign a random No from 0 - aLinks.length
-  randomInt = getRandomInt(aLinks.length)
-  this.echo(randomInt)
-  this.echo(aLinks)
-  IMAGE_URL = IMAGE_URL+aLinks[randomInt]
-  this.echo('Downloading to '+(randomInt + 1) + ' image')
-})
-
-casper.thenOpen(IMAGE_URL)
 casper.then(function () {
   this.echo('Opening Url: '+IMAGE_URL)
   this.echo('Seaching the Wallpaper...')
